@@ -1,0 +1,63 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/gremlinq-aspnet-v2.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/gremlinq-aspnet-v2.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch: run",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/gremlinq-aspnet-v2.sln"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch: dotnetwatchattach",
+            "command": "dotnet",
+            "type": "process",
+            "linux": {
+                "options": {
+                    "env": {
+                        // The FileSystemWatcher used by default wasnt working for me on linux, so I switched to the polling watcher.
+                        "DOTNET_USE_POLLING_FILE_WATCHER": "true"
+                    }
+                }
+            },
+            "args": [
+                "watch",
+                "run",
+                "--no-hot-reload",
+                "${workspaceFolder}/gremlinq-aspnet.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

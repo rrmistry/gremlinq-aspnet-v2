@@ -1,0 +1,14 @@
+GET http://localhost:5182/persons
+
+###
+
+GET http://localhost:5182/pets
+
+###
+
+POST http://localhost:5182/persons/add?name=Bob&age=30
+
+###
+
+POST http://localhost:5182/pets/add?petName=marty&petAge=10&ownerName=Bob
+
